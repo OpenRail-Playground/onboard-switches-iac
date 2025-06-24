@@ -1,0 +1,7 @@
+foo:
+  hosts:
+    hirschmann: 
+      ansible_host: 192.168.1.31
+      ansible_connection: ansible.netcommon.network_cli
+      ansible_network_os:  openrail.switchos.hirschmann
+      ansible_user: admin
