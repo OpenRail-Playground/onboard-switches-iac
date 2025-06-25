@@ -133,7 +133,6 @@ class SSHClient:
     def send_command_to_shell(self, command: str, wait_time: float = 1.0) -> str:
         """
         Send command to interactive shell and return output.
-        Based on the working ssh_command.py implementation.
         
         Args:
             command: Command to send

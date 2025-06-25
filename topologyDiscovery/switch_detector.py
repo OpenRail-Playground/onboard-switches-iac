@@ -44,7 +44,7 @@ class SwitchDetector:
         # Expected response patterns to confirm vendor
         self.vendor_patterns = {
             'hirschmann': ['hirschmann', 'hios', 'bobcat'],
-            'lantech': ['lantech', 'tpes'],
+            'lantech': ['lantech', 'TPES'],
             'kontron': ['kontron', 'kswitch', 'istax', 'microchip istax', 'kontron kswitch'],
             'nomad': ['nomad', 'luton']
         }
@@ -222,28 +222,28 @@ class SwitchDetector:
                 'interfaces': 'todo',
                 'lldp_neighbors': 'show lldp remote',
                 'mac_table': 'todo',
-                'version': 'show version'
+                'version': 'tbd'
             },
             'lantech': {
                 'system_info': 'System configuration',
                 'interfaces': 'tbd',
-                'lldp_neighbors': 'show lldp remote',
+                'lldp_neighbors': 'lldp neighborinfo',
                 'mac_table': 'todo',
-                'version': 'show version'
+                'version': 'tbd'
             },
             'kontron': {
                 'system_info': 'show version',
                 'interfaces': 'todo',
                 'lldp_neighbors': 'show lldp neighbors',
                 'mac_table': 'todo',
-                'version': 'show version'
+                'version': 'tbd'
             },
             'nomad': {
                 'system_info': 'show version',
                 'interfaces': 'todo',
                 'lldp_neighbors': 'show lldp neighbors',
                 'mac_table': 'show mac-address-table',
-                'version': 'show version'
+                'version': 'tbd'
             }
         }
         
