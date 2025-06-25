@@ -27,7 +27,7 @@ class Cliconf(CliconfBase):
 
         device_info['network_os'] = 'hirschmann'
 
-        reply = self.get('show running-configuration')
+        reply = self.get('show running-config script')
         data = to_text(reply, errors='surrogate_or_strict').strip()
         match = re.search(r'^system name (.+)', data, re.M)
         if match:

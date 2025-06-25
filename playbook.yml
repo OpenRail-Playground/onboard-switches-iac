@@ -1,6 +1,6 @@
 - name: test hirschmann
   hosts: hirschmann
-  gather_facts: false
+  gather_facts: true
   vars:
     vlans_to_add:
       - vlan_id: 10

@@ -1,0 +1,47 @@
+---
+GENERATOR_VERSION: '1.0'
+
+ANSIBLE_METADATA: |
+    {
+      'metadata_version': '1.1',
+      'status': ['preview'],
+      'supported_by': 'network'
+    }
+NETWORK_OS: hirschmann
+RESOURCE: vlans
+COPYRIGHT: Copyright 2019 Red Hat
+
+DOCUMENTATION: |
+  module: hirschmann_vlans
+  version_added: 0.1
+  short_description: Create VLAN and manage VLAN configurations on Hirschmann switches.
+  description: Create VLAN and manage VLAN configurations on Hirschmann switches.
+  author: Hackerman
+  notes:
+    - Tested against nothing.
+  options:
+    config:
+      description: A dictionary of Vlan options
+      type: list
+      elements: dict
+      suboptions:
+        vlan_id:
+          description:
+            - Vlan ID.
+          type: int
+          required: true
+        name:
+          description:
+            - Name of VLAN.          
+          type: str
+    state:
+      description:
+        - The state the configuration should be left in.
+      type: str
+      choices:
+        - merged
+        - deleted
+      default: merged
+EXAMPLES:
+- merged_example_01.txt
+- deleted_example_01.txt

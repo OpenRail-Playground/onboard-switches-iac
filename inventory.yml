@@ -4,6 +4,7 @@ foo:
       ansible_host: 192.168.1.31
       ansible_connection: ansible.netcommon.network_cli
       ansible_network_os: openrail.switchos.hirschmann
+      ansible_facts_modules: openrail.switchos.hirschmann_facts
       ansible_user: admin
       ansible_password: admin
     normad:
