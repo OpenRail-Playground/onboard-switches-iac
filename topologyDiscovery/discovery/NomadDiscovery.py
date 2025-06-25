@@ -55,17 +55,17 @@ class NomadDiscovery(BaseDiscovery):
         """Get essential system information: vendor, IP, and MAC address."""
         try:
             output = self.ssh_client.send_command_to_shell("show version", 3.0)
-            if output and ("lantech" in output or "tpes" in output.lower()):
+            if output and ("luton" in output or "tpes" in output.lower()):
                 return self._parse_basic_info(output)
             
-            return {"vendor": "lantech", "ip": self.host, "mac": None}
+            return {"vendor": "nomad", "ip": self.host, "mac": None}
             
         except Exception:
-            return {"vendor": "lantech", "ip": self.host, "mac": None}
+            return {"vendor": "nomad", "ip": self.host, "mac": None}
     
     def _parse_basic_info(self, output: str) -> Dict[str, Any]:
         """Parse essential information from system info output."""
-        info = {"vendor": "lantech", "ip": self.host, "mac": None}
+        info = {"vendor": "luton", "ip": self.host, "mac": None}
         
         # Extract MAC address
         mac_match = re.search(r"MAC address\.+(.+)", output, re.IGNORECASE)
@@ -98,19 +98,19 @@ class NomadDiscovery(BaseDiscovery):
                 continue
             
             # Extract IPv4 Management address
-            if 'IPv4 Management address' in line:
-                ip_match = re.search(r'Management Address\s+:\s+([\d\.]+)', line)
+            if 'Management Address' in line:
+                ip_match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
                 if ip_match:
                     current_neighbor['ip'] = ip_match.group(1)
             
             # Extract Chassis ID (MAC address)
             elif 'Chassis ID' in line:
-                mac_match = re.search(r'Chassis ID\s+:\s+([0-9A-Fa-f:-]+)', line)
+                mac_match = re.search(r'([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}', line)
                 if mac_match:
                     current_neighbor['mac'] = mac_match.group(0)
             
             # Determine neighbor type from System description
-            elif 'System description' in line:
+            elif 'System Description' in line:
                 line_lower = line.lower()
                 if 'hirschmann' in line_lower:
                     current_neighbor['type'] = 'hirschmann'

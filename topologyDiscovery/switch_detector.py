@@ -46,7 +46,7 @@ class SwitchDetector:
             'hirschmann': ['hirschmann', 'hios', 'bobcat'],
             'lantech': ['lantech', 'tpes'],
             'kontron': ['kontron', 'kswitch', 'istax', 'microchip istax', 'kontron kswitch'],
-            'nomad': ['nomad']
+            'nomad': ['nomad', 'luton']
         }
     
     def _load_credentials(self, credentials_file: str) -> dict:
